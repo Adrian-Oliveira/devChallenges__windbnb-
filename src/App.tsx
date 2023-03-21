@@ -14,7 +14,7 @@ function App() {
       <header>ola</header>
       <div  className="mainContent">
         <h1>Stays in Finland</h1>
-        <div className='containerCards'>
+        <div className='mainContent__containerCards'>
           {stays.map((stayData):ReactNode=>{
            return <Card {...stayData}/>
           })}

@@ -7,4 +7,11 @@
 
 .mainContent{
   padding: 14.8rem 9.6rem 14.4rem 9.4rem;
+
+  &__containerCards{
+
+    display: grid;
+    gap: 3.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(37rem, 1fr) );
+  }
 }
