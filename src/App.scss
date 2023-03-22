@@ -7,7 +7,35 @@
 
 .mainContent{
   padding: 14.8rem 9.6rem 14.4rem 9.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
 
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 29px;
+
+      color: #333333;
+    }
+
+    &__countStay{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+
+      color: #4F4F4F;
+    }
+  }
   &__containerCards{
 
     display: grid;
