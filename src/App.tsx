@@ -5,14 +5,28 @@ import './App.scss'
 
 import data from './stays.json'
 
+
+type StayType =  {
+  city:string, 
+  country:string,
+  superHost:boolean,
+  title:string ,
+  rating: number,
+  maxGuests: number,
+  type: string,
+  beds: number|null,
+  photo:string
+}
+
+
 function App() {
 
-  const stays = data;
+  const [stays, setStays] = useState<StayType[]>(data);
 
   
   return (
     <div className="App">
-      <Header/>
+      <Header stays={data} setStays={setStays}  />
       <div  className="mainContent">
         <div className='mainContent__header'>
           <h1 className='mainContent__header__title'>Stays in Finland</h1>

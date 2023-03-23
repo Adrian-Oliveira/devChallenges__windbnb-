@@ -1,18 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState,FC } from 'react';
 
 import './headerComponent.scss'
 
 
-const Header = ()=>{
+/* 
+interface Props {
+    label?:string,
+    className?:string,
+    placeHolder?:string,
+    error?:boolean,
+    disabled?: boolean,
+    helperText?:string,
+    startIcon?:string,
+    endIcon?:string,
+    value?:string,
+    fullWidth?:boolean,
+    rows?:number,
+    size?:"sm"|"md"|"lg",
+} */
+
+type StayType = {
+    city:string, 
+    country:string,
+    superHost:boolean,
+    title:string ,
+    rating: number,
+    maxGuests: number,
+    type: string,
+    beds: number|null,
+    photo:string
+}
+
+interface HeaderProps {
+    stays: StayType[];
+    setStays: (stays: StayType[]) => void;
+  }
+
+const Header: FC<HeaderProps>  = ({stays, setStays}) => {
+
+    console.log(stays);
 
     const [city,setCity] = useState<string>('');
     const [adults,setAdults] = useState<number>(0);
     const [children,setChildren] = useState<number>(0);
 
     const changeCity = (cityName:string):void=>{
- 
         setCity(cityName);
- 
+    }
+
+    const filterStays = ()=>{
+        console.log(stays)
+        const filteredStays = stays.filter((stay)=>{
+            return stay.city ===city && stay.beds!==null && stay.beds>=(adults+children);
+        });
+        console.log(filteredStays);
+        setStays(filteredStays);
     }
 
 
@@ -33,12 +75,7 @@ const Header = ()=>{
 
                 <div className="headerComponent__guests">
                     <input
-                        onKeyDown={(event) => {
-                            console.log(event.key);
-                            if (!/[0-9]|Backspace|ArrowLeft|ArrowRight/.test(event.key)) {
-                            event.preventDefault();
-                            }
-                        }}
+                        readOnly
                         value={`${adults+children}`}
                     />
                     <div>
@@ -53,6 +90,8 @@ const Header = ()=>{
                         <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
                     </div>
                 </div>
+
+                <button onClick={filterStays}>SEARCH</button>
             </div>
         </header>
 

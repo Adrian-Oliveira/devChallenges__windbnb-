@@ -2,11 +2,11 @@
 
 .cardComponentContainer{
     width: 100%;
+    max-width: 37rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     align-content: space-between;
-
     font-family: 'Montserrat';
     font-style: normal;
 
