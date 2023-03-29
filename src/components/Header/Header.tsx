@@ -38,23 +38,27 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps>  = ({stays, setStays}) => {
 
-    console.log(stays);
-
     const [city,setCity] = useState<string>('');
     const [adults,setAdults] = useState<number>(0);
     const [children,setChildren] = useState<number>(0);
+    const [inputLocationFocused, setInputLocationFocused] = useState<boolean>(false);
+    const [inputGuestsFocused, setInputGuestsFocused] = useState<boolean>(false);
+
 
     const changeCity = (cityName:string):void=>{
         setCity(cityName);
     }
 
     const filterStays = ()=>{
-        console.log(stays)
         const filteredStays = stays.filter((stay)=>{
+            if(city===''){
+                return stay.beds!==null && stay.beds>=(adults+children);
+            }
             return stay.city ===city && stay.beds!==null && stay.beds>=(adults+children);
         });
-        console.log(filteredStays);
         setStays(filteredStays);
+        setInputGuestsFocused(false);
+        setInputLocationFocused(false);
     }
 
 
@@ -62,22 +66,39 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
     return(
         
         <header className='headerComponent'>
-            <span className='headerComponent__logo' >X windbnb</span>
+            <span className='headerComponent__logo' ><i></i> windbnb</span>
             
             <div className='headerComponent__inputs'> 
-                <div className='headerComponent__location'>
-                    <input type="text" readOnly value={`${city}, Finland`}/>
+                <div 
+                className='headerComponent__location'
+                onFocus={()=>{setInputLocationFocused(true);setInputGuestsFocused(false)}}>
+
+                    <input 
+                    type="text" 
+                    readOnly 
+                    
+                    value={!!city?`${city}, Finland`:''}/>
+                    
+                    {inputLocationFocused && 
+                    <>
                     <button onClick={()=>changeCity('Helsinki')}>Helsinki, Finland</button>
                     <button onClick={()=>changeCity('Turku')}>Turku, Finland</button>
                     <button onClick={()=>changeCity('Oulu')}>Oulu, Finland</button>
                     <button onClick={()=>changeCity('Vaasa')}>Vaasa, Finland</button>
+                    </>
+                    }
+
                 </div>
 
                 <div className="headerComponent__guests">
                     <input
                         readOnly
                         value={`${adults+children}`}
+                        onFocus={()=>{setInputGuestsFocused(true);setInputLocationFocused(false)}}
                     />
+
+                    {inputGuestsFocused && 
+                    <>
                     <div>
                         <button onClick={()=>{adults>0?setAdults((prev)=>prev-1):null}}>-</button>
                         <span>{`${adults} adults`}</span>
@@ -89,6 +110,7 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                         <span>{`${children} children`}</span>
                         <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
                     </div>
+                    </>}
                 </div>
 
                 <button onClick={filterStays}>SEARCH</button>
