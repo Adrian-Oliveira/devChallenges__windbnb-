@@ -1,4 +1,44 @@
 .headerComponent{
     position: fixed;
-    padding: 0rem 9.6rem ;
+    padding: 3.2rem 9.6rem 6.1rem 9.6rem ;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+
+    &__logo{
+        color:#EB5757;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    &__inputs{
+        display: flex;
+        width: fit-content;
+        background: #FFFFFF;
+        box-shadow: 0rem .1rem .6rem rgba(0, 0, 0, 0.1);
+        border-radius: 1.6rem;
+    }
+
+    &__location{
+        min-width: 13.8rem;
+        width: fit-content;
+        padding: 1.9rem 1.6rem;
+        font-family: 'Muli';
+        font-size: 14px;
+        line-height: 16px;
+
+        color: #333333;
+
+    }
+
+    &__guests{
+        width: fit-content;
+        min-width: 10.6rem;
+        padding: 1.9rem 1.6rem;
+    }
 }

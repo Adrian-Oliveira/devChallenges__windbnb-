@@ -31,6 +31,7 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+  overflow: scroll;
 }
 
 button, input[type="submit"], input[type="reset"] {

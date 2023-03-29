@@ -66,7 +66,9 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
     return(
         
         <header className='headerComponent'>
-            <span className='headerComponent__logo' ><i></i> windbnb</span>
+            <span className='headerComponent__logo' >
+                windbnb
+            </span>
             
             <div className='headerComponent__inputs'> 
                 <div 
