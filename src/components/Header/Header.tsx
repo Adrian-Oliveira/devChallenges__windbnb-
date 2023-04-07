@@ -79,8 +79,8 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                     type="text" 
                     readOnly 
                     
-                    value={!!city?`${city}, Finland`:''}/>
-                    
+                    value={!!city?`${city}, Finland`:'Add location'}/>
+             {/*        
                     {inputLocationFocused && 
                     <>
                     <button onClick={()=>changeCity('Helsinki')}>Helsinki, Finland</button>
@@ -88,17 +88,18 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                     <button onClick={()=>changeCity('Oulu')}>Oulu, Finland</button>
                     <button onClick={()=>changeCity('Vaasa')}>Vaasa, Finland</button>
                     </>
-                    }
+                    } */}
 
                 </div>
 
                 <div className="headerComponent__guests">
                     <input
                         readOnly
-                        value={`${adults+children}`}
+                        value={(adults+children)===0?'':`${adults+children} guests`}
                         onFocus={()=>{setInputGuestsFocused(true);setInputLocationFocused(false)}}
+                        placeholder='Add guests'
                     />
-
+{/* 
                     {inputGuestsFocused && 
                     <>
                     <div>
@@ -112,10 +113,14 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                         <span>{`${children} children`}</span>
                         <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
                     </div>
-                    </>}
+                    </>} */}
                 </div>
 
-                <button onClick={filterStays}>SEARCH</button>
+                <button onClick={filterStays} className='headerComponent__searchButton'>
+                    <i className="material-symbols-outlined material-icons md-18">
+                        search
+                    </i>
+                </button>
             </div>
         </header>
 
