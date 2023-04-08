@@ -65,22 +65,71 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
 
     return(
         
-        <header className='headerComponent'>
-            <span className='headerComponent__logo' >
-                windbnb
-            </span>
-            
-            <div className='headerComponent__inputs'> 
-                <div 
-                className='headerComponent__location'
-                onFocus={()=>{setInputLocationFocused(true);setInputGuestsFocused(false)}}>
+        <div className='headerContainer'>
+            <header className={`headerComponent 
+                            ${inputLocationFocused||inputGuestsFocused?
+                                'headerComponent--focused':''
+                            }`
+                    }
+            >
 
-                    <input 
-                    type="text" 
-                    readOnly 
-                    
-                    value={!!city?`${city}, Finland`:'Add location'}/>
-             {/*        
+                {!(inputLocationFocused||inputGuestsFocused) &&
+                    <span className={`headerComponent__logo`}>
+                        Windbnb
+                    </span>
+                }
+                
+                
+                <div className={`headerComponent__inputs 
+                                ${inputLocationFocused||inputGuestsFocused?
+                                    'headerComponent__inputs--focused':''
+                                }
+                                    `}> 
+                    <div 
+                    className='headerComponent__location'
+                    onFocus={()=>{setInputLocationFocused(true);setInputGuestsFocused(false)}}>
+
+                        <input 
+                        type="text" 
+                        readOnly 
+                        
+                        value={!!city?`${city}, Finland`:'Add location'}/>
+
+                    </div>
+
+                    <div className="headerComponent__guests">
+                        <input
+                            readOnly
+                            value={(adults+children)===0?'':`${adults+children} guests`}
+                            onFocus={()=>{setInputGuestsFocused(true);setInputLocationFocused(false)}}
+                            placeholder='Add guests'
+                        />
+                    </div>
+
+                    <button onClick={filterStays} className='headerComponent__searchButton'>
+                        <i className="material-symbols-outlined material-icons md-18">
+                            search
+                        </i>
+                    </button>
+                </div>
+
+            </header>
+            
+            {(inputLocationFocused||inputGuestsFocused) &&
+                <div className='headerOpacity'
+                    onClick={()=>{setInputGuestsFocused(false);setInputLocationFocused(false)}}>
+
+                </div>
+            }
+        </div>
+
+);
+}
+
+export {Header};
+             
+
+{/*        
                     {inputLocationFocused && 
                     <>
                     <button onClick={()=>changeCity('Helsinki')}>Helsinki, Finland</button>
@@ -90,41 +139,20 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                     </>
                     } */}
 
-                </div>
 
-                <div className="headerComponent__guests">
-                    <input
-                        readOnly
-                        value={(adults+children)===0?'':`${adults+children} guests`}
-                        onFocus={()=>{setInputGuestsFocused(true);setInputLocationFocused(false)}}
-                        placeholder='Add guests'
-                    />
-{/* 
-                    {inputGuestsFocused && 
-                    <>
-                    <div>
-                        <button onClick={()=>{adults>0?setAdults((prev)=>prev-1):null}}>-</button>
-                        <span>{`${adults} adults`}</span>
-                        <button onClick={()=>{setAdults((prev)=>prev+1)}}>+</button>
-                    </div>
+{/*
+ {inputGuestsFocused && 
+    <>
+    <div>
+        <button onClick={()=>{adults>0?setAdults((prev)=>prev-1):null}}>-</button>
+        <span>{`${adults} adults`}</span>
+        <button onClick={()=>{setAdults((prev)=>prev+1)}}>+</button>
+    </div>
 
-                    <div>
-                        <button onClick={()=>{children>0?setChildren((prev)=>prev-1):null}}>-</button>
-                        <span>{`${children} children`}</span>
-                        <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
-                    </div>
-                    </>} */}
-                </div>
 
-                <button onClick={filterStays} className='headerComponent__searchButton'>
-                    <i className="material-symbols-outlined material-icons md-18">
-                        search
-                    </i>
-                </button>
-            </div>
-        </header>
-
-    );
-}
-
-export {Header};
+    <div>
+        <button onClick={()=>{children>0?setChildren((prev)=>prev-1):null}}>-</button>
+        <span>{`${children} children`}</span>
+        <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
+    </div>
+    </>} */}
