@@ -3,22 +3,6 @@ import React, { useState,FC } from 'react';
 import './headerComponent.scss'
 
 
-/* 
-interface Props {
-    label?:string,
-    className?:string,
-    placeHolder?:string,
-    error?:boolean,
-    disabled?: boolean,
-    helperText?:string,
-    startIcon?:string,
-    endIcon?:string,
-    value?:string,
-    fullWidth?:boolean,
-    rows?:number,
-    size?:"sm"|"md"|"lg",
-} */
-
 type StayType = {
     city:string, 
     country:string,
@@ -79,7 +63,6 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                     </span>
                 }
                 
-                
                 <div className={`headerComponent__inputs 
                                 ${inputLocationFocused||inputGuestsFocused?
                                     'headerComponent__inputs--focused':''
@@ -106,12 +89,12 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                         type="text" 
                         readOnly 
                         className='headerComponent__location__input'
-                        value={!!city?`${city}, Finland`:'Add location'}/>
+                        value={!!city?`${city}, Finland`:''}
+                        placeholder='Add location'/>
 
                     </div>
 
-                    <div
-                        className={`headerComponent__guests 
+                    <div className={`headerComponent__guests 
                                     ${inputLocationFocused||inputGuestsFocused?
                                         'headerComponent__guests--focused':''
                                     }
@@ -165,10 +148,29 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                     <div className='headerComponent__options__location'>
                         {inputLocationFocused && 
                         <>
-                        <button onClick={()=>changeCity('Helsinki')}>Helsinki, Finland</button>
-                        <button onClick={()=>changeCity('Turku')}>Turku, Finland</button>
-                        <button onClick={()=>changeCity('Oulu')}>Oulu, Finland</button>
-                        <button onClick={()=>changeCity('Vaasa')}>Vaasa, Finland</button>
+                        <button onClick={()=>changeCity('Helsinki')}>
+                            <span className="material-icons">
+                            location_on
+                            </span>Helsinki, Finland
+                        </button>
+                        <button onClick={()=>changeCity('Turku')}>
+                            <span className="material-icons">
+                                location_on
+                            </span>
+                            Turku, Finland
+                        </button>
+                        <button onClick={()=>changeCity('Oulu')}>
+                            <span className="material-icons">
+                                location_on
+                            </span>
+                            Oulu, Finland
+                        </button>
+                        <button onClick={()=>changeCity('Vaasa')}>
+                            <span className="material-icons">
+                                location_on
+                            </span>
+                            Vaasa, Finland
+                        </button>
                         </>
                         } 
                     </div>
@@ -177,15 +179,19 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                         {inputGuestsFocused && 
                             <>
                             <div>
+                                <div className='headerComponent__options__guests__label'>Adults</div>
+                                <div className='headerComponent__options__guests__helpText'>Ages 13 or above</div>
                                 <button onClick={()=>{adults>0?setAdults((prev)=>prev-1):null}}>-</button>
-                                <span>{`${adults} adults`}</span>
+                                <span className='headerComponent__options__guests__number'>{`${adults}`}</span>
                                 <button onClick={()=>{setAdults((prev)=>prev+1)}}>+</button>
                             </div>
 
 
                             <div>
+                                <div className='headerComponent__options__guests__label'>Children</div>
+                                <div className='headerComponent__options__guests__helpText'>Ages 2-12</div>
                                 <button onClick={()=>{children>0?setChildren((prev)=>prev-1):null}}>-</button>
-                                <span>{`${children} children`}</span>
+                                <span className='headerComponent__options__guests__number'>{`${children}`}</span>
                                 <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
                             </div>
                             </>
@@ -209,31 +215,3 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
 
 export {Header};
              
-
-{/*        
-                    {inputLocationFocused && 
-                    <>
-                    <button onClick={()=>changeCity('Helsinki')}>Helsinki, Finland</button>
-                    <button onClick={()=>changeCity('Turku')}>Turku, Finland</button>
-                    <button onClick={()=>changeCity('Oulu')}>Oulu, Finland</button>
-                    <button onClick={()=>changeCity('Vaasa')}>Vaasa, Finland</button>
-                    </>
-                    } */}
-
-
-{/*
- {inputGuestsFocused && 
-    <>
-    <div>
-        <button onClick={()=>{adults>0?setAdults((prev)=>prev-1):null}}>-</button>
-        <span>{`${adults} adults`}</span>
-        <button onClick={()=>{setAdults((prev)=>prev+1)}}>+</button>
-    </div>
-
-
-    <div>
-        <button onClick={()=>{children>0?setChildren((prev)=>prev-1):null}}>-</button>
-        <span>{`${children} children`}</span>
-        <button onClick={()=>{setChildren((prev)=>prev+1)}}>+</button>
-    </div>
-    </>} */}

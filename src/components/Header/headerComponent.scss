@@ -6,6 +6,7 @@
 .headerComponent{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     padding: 3.2rem 9.6rem 6.1rem 9.6rem ;
     width: 100%;
@@ -52,18 +53,25 @@
 
         color: #333333;
 
-        border-right: .1rem solid #F2F2F2;;
-        &__input{
+        border-right: .1rem solid #F2F2F2;
+
+        &__input, &__input::placeholder{
             width: 100%;
             font-family: 'Mulish';
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
             line-height: 18px;
-
-            color: #BDBDBD;
         }
 
+        &__input{
+            color: #333333;
+        }
+
+        &__input::placeholder{
+            color: #BDBDBD;
+        }
+        
         &--focused{
             width: 33%;
             border: 1px solid transparent;
@@ -103,7 +111,7 @@
 
         border-right: .1rem solid #F2F2F2;;
 
-        &__input{
+        &__input, &__input::placeholder{
             width: 100%;
             font-family: 'Mulish';
             font-style: normal;
@@ -111,13 +119,22 @@
             font-size: 14px;
             line-height: 18px;
 
+        }
+
+        &__input{
+            color: #333333;
+        }
+
+        &__input::placeholder{
             color: #BDBDBD;
+
         }
 
         &--focused{
             width: 33%;
             border: 1px solid transparent;
-            padding: 1.2rem 0  1rem 3.2rem ;
+            padding: 1.2rem 0 1rem 1.3rem;
+
         }
 
         &--choosingGuests{
@@ -178,13 +195,72 @@
             line-height: 18px;
         }
     }
-    /* &__options{
+    &__options{
         width: 100%;
-        min-height: 18.1rem;
+        min-height: 20rem;
+        margin-top: 4.1rem;
         display: grid;
+        grid-template-columns: repeat( auto-fill , minmax(33%,1fr) );
 
-        grid-template-columns: repeat( auto-fill , minmax(37rem,1fr) );
-    } */
+
+
+        &__location{
+            display: flex;
+            flex-direction: column;
+            gap:3.45rem;
+            align-items: flex-start;
+            padding-left: 2.6rem;
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+
+            /* identical to box height */
+
+            color: #4F4F4F;
+
+            button{
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &__guests{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-left: 1.3rem;
+
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px;
+            
+            &__label{
+                color: #333333;
+            }
+
+            &__helpText{
+                color: #BDBDBD;
+            }
+
+            &__number{
+                margin-left: 1.5rem;
+                margin-right: 1.5rem;
+            }
+            
+            button{
+                width: 2.3rem;
+                height: 2.3rem;
+                margin-top: 1.2rem;
+                color: #828282;
+                border: 1px solid #828282;
+                border-radius: 4px;
+            }
+        }
+    } 
 }
 
 .headerOpacity{
