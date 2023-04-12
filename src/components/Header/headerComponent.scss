@@ -113,12 +113,7 @@
 
         &__input, &__input::placeholder{
             width: 100%;
-            font-family: 'Mulish';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 18px;
-
+            font: normal 400 14px/18px 'Mulish', sans-serif;
         }
 
         &__input{
@@ -146,11 +141,7 @@
         &__helpText{
             width: 100%;
             height: 100%;
-            font-family: 'Mulish';
-            font-style: normal;
-            font-weight: 800;
-            font-size: 9px;
-            line-height: 11px;
+            font: normal 800 9px/11px 'Mulish', sans-serif;
             text-transform: uppercase;
             
             color: #333333;
@@ -161,9 +152,7 @@
         position: relative;
         width: 5.3rem;
         height: 5.5rem;
-        /* padding: 1.6rem 1.6rem 1.6rem 1.6rem; */
         &__icon{
-            /* position: absolute; */
             top: 1.9rem;
             left: 1.9rem;
             color: #EB5757;
@@ -187,12 +176,8 @@
             background: #EB5757;
             box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
             border-radius: 16px;
-
-            font-family: 'Mulish';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 18px;
+            
+            font: normal 700 14px/18px 'Mulish', sans-serif;
         }
     }
     &__options{
@@ -210,13 +195,8 @@
             gap:3.45rem;
             align-items: flex-start;
             padding-left: 2.6rem;
-            font-family: 'Mulish';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 18px;
+            font: normal 400 14px/18px 'Mulish', sans-serif;
 
-            /* identical to box height */
 
             color: #4F4F4F;
 
@@ -231,12 +211,7 @@
             flex-direction: column;
             justify-content: space-between;
             padding-left: 1.3rem;
-
-            font-family: 'Mulish';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 18px;
+            font: normal 700 14px/18px 'Mulish', sans-serif;
             
             &__label{
                 color: #333333;
@@ -268,4 +243,25 @@
 
     width: 100%;
     height: 100dvh;
+}
+
+@media only screen and (max-width: 23.5em) {
+
+.headerComponent{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3.9rem;
+    padding: 1.9rem 1.3rem 3.7rem 1.3rem;
+
+    &__logo{
+        align-self: flex-start;
+    }
+
+    &__searchButton--focused{
+        position: absolute;
+        right:12.4rem;
+        bottom:2.4rem;
+    }
+}
 }

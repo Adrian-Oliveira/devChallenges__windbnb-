@@ -47,14 +47,26 @@
 /* 375/16 = 23.4375em */
 
 @media only screen and (max-width: 23.5em) {
-  .mainContent{
-    padding: 16.7rem 1.2rem 1.2rem 1.2rem;
 
-    &__containerCards{
+.mainContent{
+  padding: 16.7rem 1.2rem 1.2rem 1.2rem;
 
-      display: grid;
-      gap: 3.2rem;
-      grid-template-columns: 100%;
-    }
+  &__containerCards{
+
+    display: grid;
+    gap: 3.2rem;
+    grid-template-columns: 100%;
   }
+  &__header__title{
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+  &__header__countStay{
+      font-size: 14px;
+      line-height: 17px;
+  }
+  
+}
+
 }
