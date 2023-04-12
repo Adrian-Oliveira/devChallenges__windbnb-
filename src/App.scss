@@ -43,3 +43,18 @@
     grid-template-columns: repeat( auto-fill , minmax(37rem,1fr) );
   }
 }
+
+/* 375/16 = 23.4375em */
+
+@media only screen and (max-width: 23.5em) {
+  .mainContent{
+    padding: 16.7rem 1.2rem 1.2rem 1.2rem;
+
+    &__containerCards{
+
+      display: grid;
+      gap: 3.2rem;
+      grid-template-columns: 100%;
+    }
+  }
+}
