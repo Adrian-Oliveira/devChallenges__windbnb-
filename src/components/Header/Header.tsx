@@ -41,11 +41,16 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
             return stay.city ===city && stay.beds!==null && stay.beds>=(adults+children);
         });
         setStays(filteredStays);
-        setInputGuestsFocused(false);
-        setInputLocationFocused(false);
+        closeHeader();
     }
 
-
+    const isMobile = ()=> {
+        return window.innerWidth <= 768; // adjust the breakpoint as needed
+    }
+    
+    const closeHeader = ()=>{
+        setInputGuestsFocused(false);setInputLocationFocused(false)
+    }
 
     return(
         
@@ -62,7 +67,14 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
                         Windbnb
                     </span>
                 }
-                
+                {(isMobile()&&(inputLocationFocused||inputGuestsFocused))?
+                <span className='headerComponent__textAndClose'>
+                    <span>Edit your search</span>
+                    <i className="material-icons md-18" onClick={closeHeader}>
+                        close
+                    </i>
+                </span>
+                :null}
                 <div className={`headerComponent__inputs 
                                 ${inputLocationFocused||inputGuestsFocused?
                                     'headerComponent__inputs--focused':''
@@ -204,7 +216,7 @@ const Header: FC<HeaderProps>  = ({stays, setStays}) => {
             
             {(inputLocationFocused||inputGuestsFocused) &&
                 <div className='headerOpacity'
-                    onClick={()=>{setInputGuestsFocused(false);setInputLocationFocused(false)}}>
+                    onClick={closeHeader}>
 
                 </div>
             }

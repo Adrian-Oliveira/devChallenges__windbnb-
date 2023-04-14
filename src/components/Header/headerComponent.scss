@@ -77,8 +77,6 @@
             border: 1px solid transparent;
             padding: 1.2rem 0  1rem 2.7rem ;
             padding-top: 1.2rem;
-
-
         }
 
         &--choosingLocation{
@@ -251,17 +249,69 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 3.9rem;
+    gap: 1.6rem;
     padding: 1.9rem 1.3rem 3.7rem 1.3rem;
-
+    max-height: 100dvh;
+    
+    &--focused{
+        padding-bottom: 7.2rem;
+    }
     &__logo{
         align-self: flex-start;
+    }
+    &__textAndClose{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Mulish';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+
+        color: #333333;
+
     }
 
     &__searchButton--focused{
         position: absolute;
         right:12.4rem;
         bottom:2.4rem;
+    }
+    &__inputs--focused{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+    }
+    &__location--focused{
+        width: 100%;
+        border-bottom: 1px solid #F2F2F2;
+        border-radius: 0;
+
+        padding: 1.1rem 0 1.2rem 2.6rem;
+    }
+    &__guests--focused{
+        width: 100%;
+        padding: 1.1rem 0 1.2rem 2.6rem;
+
+    }
+    &__location--choosingLocation,&__guests--choosingGuests {
+        border: 1px solid transparent;
+        filter: none;
+        border-radius: none;
+    }
+
+    &__options{
+        margin-top: 1.9rem;
+        min-height: 36.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        &__guests{
+            padding-left: 2.6rem;
+        }
     }
 }
 }
